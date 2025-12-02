@@ -1,0 +1,47 @@
+================================================================================
+                    ANOMALY DETECTION TRAINING SUMMARY
+================================================================================
+
+DATASET INFORMATION
+--------------------------------------------------------------------------------
+Training samples: 4075
+Test samples: 1019
+Features: 13
+Feature names: heart_rate, blood_oxygen, blood_pressure_systolic, blood_pressure_diastolic, glucose_level, body_temperature, respiratory_rate, activity_level, sleep_quality, stress_level, hrv_sdnn, steps_count, calories_burned
+
+HYPERPARAMETERS
+--------------------------------------------------------------------------------
+
+Isolation Forest:
+{'n_estimators': 100, 'max_samples': 'auto', 'contamination': 0.15, 'random_state': 42, 'n_jobs': -1}
+
+Autoencoder:
+{'encoding_dims': [64, 32, 16], 'learning_rate': 0.001, 'batch_size': 32, 'epochs': 100, 'dropout_rate': 0.2, 'patience': 10}
+
+LSTM Autoencoder:
+{'lstm_units': 64, 'num_layers': 2, 'sequence_length': 10, 'learning_rate': 0.001, 'batch_size': 32, 'epochs': 100, 'dropout_rate': 0.2, 'patience': 10}
+
+MODEL COMPARISON
+--------------------------------------------------------------------------------
+           Model  Anomaly Rate (%)  Precision   Recall  F1-Score  ROC-AUC  Silhouette  Severe (%)
+Isolation Forest         14.327772   0.972603 0.928105  0.949833 0.998181    0.734085    1.177625
+     Autoencoder         32.580962   0.397590 0.862745  0.544330 0.912180    0.581771   10.402355
+LSTM Autoencoder         85.148515   0.160465 0.907895  0.272727 0.615070    0.171764   62.376238
+
+BEST MODEL
+--------------------------------------------------------------------------------
+Selected Model: Isolation Forest
+F1-Score: 0.9498327759197325
+ROC-AUC: 0.9981811046204471
+Anomaly Rate: 14.33%
+
+SEVERITY DISTRIBUTION (Best Model)
+--------------------------------------------------------------------------------
+Normal: 85.18%
+Mild: 6.58%
+Moderate: 7.07%
+Severe: 1.18%
+
+================================================================================
+TRAINING COMPLETE
+================================================================================
